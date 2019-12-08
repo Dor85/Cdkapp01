@@ -29,6 +29,7 @@ export class NotifyingBucket extends Construct {
         
         bucket.addObjectCreatedNotification(destination);
         bucket.grantRead(props.reader);
+        bucket.grantPublicAccess();
 
     }
 }

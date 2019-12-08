@@ -1,3 +1,45 @@
 {
-  "@aws-cdk/core:enableStackNameDuplicates": "true"
+  "@aws-cdk/core:enableStackNameDuplicates": "true",
+  "vpc-provider:account=239329209683:filter.isDefault=true:filter.tag:Name=aws-default:filter.vpc-id=vpc-37a5324d:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-37a5324d",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-d6e1a7f8",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-e125379e"
+          },
+          {
+            "subnetId": "subnet-efa2a9a5",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-e125379e"
+          },
+          {
+            "subnetId": "subnet-fde4a0a1",
+            "availabilityZone": "us-east-1c",
+            "routeTableId": "rtb-e125379e"
+          },
+          {
+            "subnetId": "subnet-b786fdd0",
+            "availabilityZone": "us-east-1d",
+            "routeTableId": "rtb-e125379e"
+          },
+          {
+            "subnetId": "subnet-cdef61f3",
+            "availabilityZone": "us-east-1e",
+            "routeTableId": "rtb-e125379e"
+          },
+          {
+            "subnetId": "subnet-0aae9305",
+            "availabilityZone": "us-east-1f",
+            "routeTableId": "rtb-e125379e"
+          }
+        ]
+      }
+    ]
+  }
 }
