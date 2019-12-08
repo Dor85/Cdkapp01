@@ -7,6 +7,7 @@ import { NotifyingBucket } from './notifyingbucket';
 import { SqsSubscription } from '@aws-cdk/aws-sns-subscriptions';
 import { Duration, SecretValue } from '@aws-cdk/core';
 import { HelloLambda } from './HelloLambda';
+import { SecurityGroup } from '@aws-cdk/aws-ec2';
 
 export class App01Stack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -20,7 +21,8 @@ export class App01Stack extends cdk.Stack {
       vpcId: 'vpc-37a5324d',
       vpcName: 'aws-default',
     });
-    
+    //import an existing securty group
+    const dbScGp = SecurityGroup.fromSecurityGroupId(this, 'MyImportedSG', 'sg-08c449d6eac79a6e3');
     //create an rds instance with a database named testdb.
     const dbInstance = new rds.DatabaseInstance(this, 'MyTestDb', {
       engine: rds.DatabaseInstanceEngine.MYSQL,
@@ -28,7 +30,11 @@ export class App01Stack extends cdk.Stack {
       masterUsername: 'sysCdk',
       masterUserPassword: SecretValue.plainText('sysCdksysCdk'),
       databaseName: 'testdb',
+      securityGroups:[
+        dbScGp
+      ],
       vpc,
+      deletionProtection: false
     });
     
     //create a queue
